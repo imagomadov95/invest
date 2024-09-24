@@ -1,0 +1,7 @@
+.hs-accordion.active .hs-accordion-content {
+  display: block;
+}
+
+.hs-accordion-content {
+  display: none;
+}

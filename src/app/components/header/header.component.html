@@ -1,0 +1,214 @@
+<header class="tw-hidden lg:tw-block tw-bg-purple-600 tw-text-white">
+  <section class="tw-container tw-mx-auto">
+    <div class="tw-flex tw-relative">
+      <a class="tw-flex tw-justify-center tw-items-center" href="#">
+        <div class="tw-self-center tw-text-3xl tw-font-bold tw-px-2 tw-py-4 tw-mb-1">точка</div>
+      </a>
+      <nav
+        class="font-inter  tw-mx-auto tw-h-auto tw-w-full tw-max-w-screen-2xl lg:tw-relative lg:tw-top-0"
+      >
+        <div
+          class="lg:tw-relative tw-flex tw-flex-col tw-px-6 tw-py-6 lg:tw-justify-between lg:tw-gap-16 lg:tw-flex-row lg:tw-items-center lg:tw-px-10 lg:tw-py-4 xl:tw-px-20"
+        >
+            <div
+              class="tw-mt-14 lg:tw-justify-center lg:tw-gap-4 lg:tw-items-center tw-hidden lg:grow tw-flex-col tw-space-y-8 lg:tw-mt-0 lg:tw-flex lg:tw-flex-row lg:tw-space-y-0"
+            >
+              @for (section of menuItems; track $index) {
+                <ng-container
+                  *ngTemplateOutlet="
+                  sectionTemplate;
+                  context: {
+                    $implicit: section
+                  }
+                "
+                >
+                </ng-container>
+              }
+            </div>
+        </div>
+      </nav>
+      <div class="tw-flex tw-justify-center tw-gap-4 tw-items-center">
+        <div
+          class="lg:tw-self-center tw-flex tw-flex-col tw-justify-end tw-space-y-8 lg:tw-flex  lg:tw-space-x-3 lg:tw-space-y-0"
+        >
+          <a
+            class="font-inter tw-rounded-lg tw-border-2 tw-border-white tw-px-8 tw-py-2 hover:tw-bg-gray-800 "
+            href="#"
+          >
+            Войти
+          </a>
+        </div>
+        <button
+          (click)="toggleMenu()"
+          class="tw-right-5 lg:tw-hidden tw-border-2 tw-border-white tw-rounded tw-px-4 tw-py-2"
+          href="#"
+        >
+          <svg fill="" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M3.75 12H20.25"
+              stroke="#160042"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            ></path>
+            <path
+              d="M3.75 6H20.25"
+              stroke="#160042"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            ></path>
+            <path
+              d="M3.75 18H20.25"
+              stroke="#160042"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+</header>
+<header class="tw-bg-purple-600 tw-text-white lg:tw-hidden" [ngClass]="{ 'tw-bg-white': selectedMenu }">
+  <div class="tw-flex tw-justify-between tw-items-center tw-py-2 tw-px-4">
+    <div class="tw-text-4xl tw-font-bold" [ngClass]="{ 'tw-text-black': selectedMenu }">точка</div>
+    <div class="tw-flex tw-items-center tw-gap-2">
+      <button  class=" tw-border-2   tw-rounded-md tw-px-4 tw-py-[6px]" [ngClass]="{ 'tw-border-black tw-text-black': selectedMenu,
+       'tw-border-white': !selectedMenu}">Войти</button>
+      <button (click)="toggleMenu()" [ngClass]="{ 'tw-hidden tw-text-black': selectedMenu }" class=" tw-border-2 tw-border-white tw-rounded-md tw-px-2 tw-py-[6px]">
+        <svg fill="white" width="24" height="24"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+      </button>
+      <button (click)="toggleMenu()" [ngClass]="{ 'tw-hidden': !selectedMenu }" class="content  tw-bg-black tw-px-3 tw-py-[8px] tw-rounded-md"><svg fill="white" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Pro 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d="M326.6 166.6L349.3 144 304 98.7l-22.6 22.6L192 210.7l-89.4-89.4L80 98.7 34.7 144l22.6 22.6L146.7 256 57.4 345.4 34.7 368 80 413.3l22.6-22.6L192 301.3l89.4 89.4L304 413.3 349.3 368l-22.6-22.6L237.3 256l89.4-89.4z"/></svg></button>
+    </div>
+  </div>
+  @if(selectedMenu) {
+    <nav
+      [ngClass]="{ 'tw-text-black': selectedMenu }"
+      class="font-inter  tw-mx-auto tw-h-auto tw-w-full tw-max-w-screen-2xl lg:tw-relative lg:tw-top-0"
+    >
+      <div
+        class="lg:tw-relative tw-flex tw-flex-col tw-px-6 tw-py-6 lg:tw-justify-between lg:tw-gap-16 lg:tw-flex-row lg:tw-items-center lg:tw-px-10 lg:tw-py-4 xl:tw-px-20"
+      >
+          <div
+            class=" lg:grow tw-flex tw-flex-col tw-space-y-8 lg:tw-mt-0 lg:tw-flex lg:tw-flex-row lg:tw-space-y-0"
+          >
+            @for (section of menuItems; track $index) {
+              <ng-container
+                *ngTemplateOutlet="
+                  sectionTemplate;
+                  context: {
+                    $implicit: section
+                  }
+                "
+              >
+              </ng-container>
+            }
+          </div>
+
+      </div>
+    </nav>
+  }
+</header>
+<main class="tw-bg-amber-100 tw-h-[500px]"  [ngClass]="{'tw-backdrop-opacity-10 tw-backdrop-invert tw-bg-amber-300/30': selectedItem}"></main>
+
+<ng-template #sectionTemplate let-section>
+  <div class="lg:tw-contents tw-flex tw-flex-col">
+    <button
+      (click)="toggleItem(section)"
+      class=" tw-flex tw-flex-row tw-rounded-lg lg:tw-px-2 lg:tw-py-4 lg: lg:hover:tw-text-gray-200"
+      href="#"
+    >
+      {{ section.label }}
+      <svg
+        [class.tw-rotate-180]="selectedItem !== section"
+        class="tw-fill-current tw-transition tw-rotate-180 tw-w-6 tw-h-6"
+        viewBox="0 0 24 24"
+      >
+        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path>
+      </svg>
+    </button>
+    @if (selectedItem === section) {
+      <div
+        class="tw-z-50 tw-flex tw-mx-auto tw-w-full tw-flex-col tw-rounded-lg tw-px-5 lg:tw-absolute lg:tw-top-24 lg:tw-w-auto tw-bg-white lg:tw-flex-row lg:tw-flex-wrap lg:tw-py-7 lg:tw-mx-4"
+      >
+        <div
+          class="lg:tw-h-[400px] tw-w-auto lg:tw-w-[550px] xl:tw-w-[650px] tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-overflow-y-scroll"
+        >
+          @for (item of section.sections; track $index) {
+            <div
+              class="tw-hidden md:tw-flex grow tw-flex-col tw-rounded-lg lg:tw-px-5 lg:tw-py-5 lg:basis-60 xl:tw-px-8"
+            >
+              <h2
+                class="tw-whitespace-nowrap font-inter tw-mb-1 tw-mt-2 lg:tw-mt-5 tw-text-lg tw-font-medium tw-text-black"
+              >
+                {{ item.title }}
+              </h2>
+              <ul class="" id="collapseThirdThree" data-twe-collapse-item>
+                @for (link of item.links; track $index) {
+                  <li class="hover:bg-secondary-100">
+                    <a
+                      class="font-inter max-w-64 tw-text-sm tw-text-gray-500 lg:tw-max-w-sm"
+                      href="{{ link.url }}"
+                    >
+                      {{ link.label }}
+                    </a>
+                  </li>
+                }
+              </ul>
+            </div>
+            <div class="hs-accordion-group tw-block md:tw-hidden">
+              <div
+                class="hs-accordion"
+                [class.active]="isActive(item.id)"
+                id="hs-basic-with-arrow-heading-one"
+              >
+                <button
+                  class="hs-accordion-toggle tw-py-1 tw-inline-flex tw-items-center tw-gap-x-1 tw-w-full tw-font-semibold text-start tw-text-gray-800 hover:tw-text-gray-500 tw-rounded-lg"
+                  (click)="toggleAccordion(item.id)"
+                  aria-controls="hs-basic-with-arrow-collapse-one"
+                >
+                  {{ item.title }}
+                  <svg
+                    class="tw-size-4"
+                    [class.tw-rotate-180]="isActive(item.id) !== true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+                <div
+                  [id]="item.id"
+                  class="hs-accordion-content tw-w-full tw-overflow-hidden transition-[height] tw-duration-300"
+                  aria-labelledby="hs-basic-with-arrow-heading-one"
+                >
+                  <ul>
+                    @for (link of item.links; track $index) {
+                      <li class="hover:bg-secondary-100">
+                        <a
+                          class="font-inter max-w-64 tw-text-sm tw-text-gray-500 lg:tw-max-w-sm"
+                          href="{{ link.url }}"
+                        >
+                          {{ link.label }}
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</ng-template>
