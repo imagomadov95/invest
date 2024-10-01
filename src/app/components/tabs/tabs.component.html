@@ -1,0 +1,20 @@
+@if (tabs$ | async; as tabs) {
+  @if (!!tabs.length) {
+    <div class="tw-max-w-2xl tw-mx-auto">
+      <div class="tw-ml-4">
+        <ul class="tw-flex tw-flex-wrap tw-gap-4">
+          @for (tab of tabs; track $index) {
+            <li class="" (click)="activeTabsId(tab.id)">
+              <button [ngClass]="{ 'tw-border-gray-900 tw-border-b-2': (activeTabId$ | async) === tab.id }" [disabled]="tab.disabled"  class="tw-inline-block tw-text-gray-500 hover:tw-text-gray-600 hover:tw-border-gray-900 tw-rounded-t-lg tw-py-2 tw-text-sm tw-font-medium tw-text-center hover:tw-border-b-2" ><span [ngClass]="{ 'tw-text-black': (activeTabId$ | async) === tab.id }">{{tab.title}}</span></button>
+            </li>
+          }
+        </ul>
+      </div>
+      <div>
+        <div class="tw-bg-[#e7dbfd] tw-text-black tw-flex tw-p-4 tw-rounded-xl">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  }
+}

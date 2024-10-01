@@ -1,5 +1,6 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
+import {TabsComponent} from "../tabs/tabs.component";
 
 export interface MenuItem {
   label: string;
@@ -22,7 +23,7 @@ export interface Link {
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'tochka-header',
   standalone: true,
-  imports: [NgTemplateOutlet, NgClass],
+  imports: [NgTemplateOutlet, NgClass, TabsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
